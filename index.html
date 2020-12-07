@@ -3,8 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>VirtueGuru</title>
+    <link rel="stylesheet" href="codemirror/lib/codemirror.css">
+    <script src="codemirror/lib/codemirror.js"></script>
+    <script src="codemirror/mode/javascript/javascript.js"></script>
 </head>
 <body>
-
+    <textarea id="editor"></textarea>
+    <script !src="">
+        let editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
+            mode: "javascript",
+            lineNumber: true
+        })
+    </script>
 </body>
 </html>

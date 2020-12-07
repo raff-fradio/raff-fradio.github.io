@@ -19,7 +19,11 @@
     </style>
 </head>
 <body>
-    <textarea id="editor"></textarea>
+    <textarea id="editor">
+        function sum(a, b) {
+            
+        }
+    </textarea>
     <button id="execute">Execute</button>
     <span id="result"></span>
     <script !src="">
@@ -28,7 +32,6 @@
             lineNumbers: true,
             theme: "darcula",
             autoCloseBrackets: true,
-            autoCloseTags: true
         })
         document.getElementById("execute").onmouseup = () => {
             editor.save();

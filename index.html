@@ -13,7 +13,7 @@
     <script src="codemirror/addon/edit/closetag.js"></script>
     <style>
         body {
-            margin: 0;
+            margin: 20px 0;
         }
         span {
             width: 100%;
@@ -28,7 +28,7 @@
                 <button id="execute">Execute</button>
             </div>
             <div class="col-sm">
-                <span id="result"></span>
+                <textarea id="result" style="display: none;"></textarea>
             </div>
         </div>
     </div>
@@ -38,16 +38,32 @@
             lineNumbers: true,
             theme: "darcula",
             autoCloseBrackets: true,
-        })
+        });
+        let result = CodeMirror.fromTextArea(document.getElementById("result"), {
+            readOnly: "nocursor",
+            lineNumbers: false,
+            theme: "darcula"
+        });
+
         editor.setOption("extraKeys", {
             Tab: function(cm) {
                 let spaces = Array(cm.getOption("indentUnit") + 1).join(" ");
                 cm.replaceSelection(spaces);
             }
         });
+        editor.setOption("value", "function sum(a, b) {\n  \n}")
         document.getElementById("execute").onmouseup = () => {
-            eval(editor.getValue());
-            document.getElementById("result").innerText = sum(100,200);
+            let output = "";
+            try {
+                eval(editor.getValue());
+                output += sum(200, 400);
+                result.setValue(output);
+            }
+            catch (e) {
+                console.log(e);
+                output += e.toString()
+                result.setValue(output);
+            }
         }
     </script>
 </body>

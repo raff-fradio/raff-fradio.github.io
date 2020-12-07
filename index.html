@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="codemirror/theme/darcula.css">
     <script src="codemirror/lib/codemirror.js"></script>
     <script src="codemirror/mode/javascript/javascript.js"></script>
+    <script src="codemirror/addon/edit/closebrackets.js"></script>
+    <script src="codemirror/addon/edit/closetag.js"></script>
 </head>
 <body>
     <textarea id="editor"></textarea>
@@ -14,7 +16,9 @@
         let editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
             mode: "javascript",
             lineNumbers: true,
-            theme: "darcula"
+            theme: "darcula",
+            autoCloseBrackets: true,
+            autoCloseTags: true
         })
         
     </script>

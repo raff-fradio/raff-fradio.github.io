@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>VirtueGuru</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+
     <link rel="stylesheet" href="codemirror/lib/codemirror.css">
     <link rel="stylesheet" href="codemirror/theme/darcula.css">
     <script src="codemirror/lib/codemirror.js"></script>
@@ -19,9 +21,17 @@
     </style>
 </head>
 <body>
-    <textarea id="editor"></textarea>
-    <button id="execute">Execute</button>
-    <span id="result"></span>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <textarea id="editor" style="display: none;"></textarea>
+                <button id="execute">Execute</button>
+            </div>
+            <div class="col-sm">
+                <span id="result"></span>
+            </div>
+        </div>
+    </div>
     <script !src="">
         let editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
             mode: "javascript",
@@ -29,11 +39,16 @@
             theme: "darcula",
             autoCloseBrackets: true,
         })
-        function runTest() {
-            eval(editor.getValue())
-            sum(100, 200);
+        editor.setOption("extraKeys", {
+            Tab: function(cm) {
+                let spaces = Array(cm.getOption("indentUnit") + 1).join(" ");
+                cm.replaceSelection(spaces);
+            }
+        });
+        document.getElementById("execute").onmouseup = () => {
+            eval(editor.getValue());
+            document.getElementById("result").innerText = sum(100,200);
         }
-        document.getElementById("execute").addEventListener("mouseup", runTest)
     </script>
 </body>
 </html>

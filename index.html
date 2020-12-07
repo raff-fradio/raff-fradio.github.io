@@ -13,10 +13,15 @@
         body {
             margin: 0;
         }
+        span {
+            width: 100%;
+        }
     </style>
 </head>
 <body>
     <textarea id="editor"></textarea>
+    <button id="execute">Execute</button>
+    <span id="result"></span>
     <script !src="">
         let editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
             mode: "javascript",
@@ -25,7 +30,11 @@
             autoCloseBrackets: true,
             autoCloseTags: true
         })
+        document.getElementById("execute").onmouseup = () => {
+            editor.save();
+            eval(document.getElementById("editor").value);
 
+        }
     </script>
 </body>
 </html>

@@ -58,7 +58,7 @@
             try {
                 eval(editor.getValue());
                 output += "Testing for 200 + 400 = 600 => " + (sum(200, 400) === 600) + "\n";
-                output += "Testing for 1 + 9 = 10 => " + (sum(1, 9) === 10) + "\n";
+                output += "Testing for 1 + 9 = 10 => " + ((sum(1, 9) === 10) ? true : false + " got " + sum(1, 9) + "\n");
                 output += "Testing for 5 + 16 = 21 => " + (sum(5, 16) === 21) + "\n";
                 result.setValue(output);
             }

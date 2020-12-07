@@ -21,12 +21,15 @@
 <body>
     <textarea id="editor">
         function sum(a, b) {
-            
+
         }
     </textarea>
     <button id="execute">Execute</button>
     <span id="result"></span>
     <script !src="">
+        function runTest() {
+            sum(100, 200);
+        }
         let editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
             mode: "javascript",
             lineNumbers: true,
@@ -36,7 +39,7 @@
         document.getElementById("execute").onmouseup = () => {
             editor.save();
             eval(document.getElementById("editor").value);
-
+            runTest();
         }
     </script>
 </body>

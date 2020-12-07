@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>VirtueGuru</title>
     <link rel="stylesheet" href="codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="codemirror/theme/darcula.css">
     <script src="codemirror/lib/codemirror.js"></script>
     <script src="codemirror/mode/javascript/javascript.js"></script>
 </head>
@@ -12,8 +13,10 @@
     <script !src="">
         let editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
             mode: "javascript",
-            lineNumber: true
+            lineNumbers: true,
+            theme: "darcula"
         })
+        
     </script>
 </body>
 </html>

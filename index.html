@@ -40,6 +40,7 @@
             autoCloseBrackets: true,
         });
         let result = CodeMirror.fromTextArea(document.getElementById("result"), {
+            mode: "text",
             readOnly: "nocursor",
             lineNumbers: false,
             theme: "darcula"
@@ -56,7 +57,9 @@
             let output = "";
             try {
                 eval(editor.getValue());
-                output += sum(200, 400);
+                output += "Testing for 200 + 400 = 600 => " + (sum(200, 400) === 600) + "\n";
+                output += "Testing for 1 + 9 = 10 => " + (sum(1, 9) === 10) + "\n";
+                output += "Testing for 5 + 16 = 21 => " + (sum(5, 16) === 21) + "\n";
                 result.setValue(output);
             }
             catch (e) {

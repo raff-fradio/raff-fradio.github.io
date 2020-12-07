@@ -19,28 +19,21 @@
     </style>
 </head>
 <body>
-    <textarea id="editor">
-        function sum(a, b) {
-
-        }
-    </textarea>
+    <textarea id="editor"></textarea>
     <button id="execute">Execute</button>
     <span id="result"></span>
     <script !src="">
-        function runTest() {
-            sum(100, 200);
-        }
         let editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
             mode: "javascript",
             lineNumbers: true,
             theme: "darcula",
             autoCloseBrackets: true,
         })
-        document.getElementById("execute").onmouseup = () => {
-            editor.save();
-            eval(document.getElementById("editor").value);
-            runTest();
+        function runTest() {
+            eval(editor.getValue())
+            sum(100, 200);
         }
+        document.getElementById("execute").addEventListener("mouseup", runTest)
     </script>
 </body>
 </html>
